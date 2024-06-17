@@ -1,0 +1,23 @@
+
+$grid-color: rgb(134, 134, 134);
+
+section.main {
+    background-image:
+        radial-gradient(rgba(255, 255, 255, 0), black 80%),
+        linear-gradient(to right, $grid-color 1px, transparent 1px),
+        linear-gradient(to bottom, $grid-color 1px, transparent 1px);
+    background-size: contain, 48px 48px, 48px 48px;
+    background-position: left, center, center;
+
+    main {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+section {
+    padding-top: var(--nav-height);
+    height: 100vh;
+}

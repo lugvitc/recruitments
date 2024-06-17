@@ -1,0 +1,34 @@
+
+body {
+    margin: 0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+
+:root {
+    --line-height: 1.5;
+}
+
+html {
+    line-height: var(--line-height);
+}
+
+html {
+    scroll-snap-type: y mandatory;
+}
+
+section {
+    scroll-snap-align: start;
+}
+
+::selection {
+    background-color: rgb(250 204 21);
+    color: black;
+}

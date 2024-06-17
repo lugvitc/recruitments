@@ -1,0 +1,52 @@
+
+
+$grid-color: rgb(134, 134, 134);
+
+section.main {
+    background-image:
+        radial-gradient(rgba(255, 255, 255, 0), black 80%),
+        linear-gradient(to right, $grid-color 1px, transparent 1px),
+        linear-gradient(to bottom, $grid-color 1px, transparent 1px);
+    background-size: contain, 48px 48px, 48px 48px;
+    background-position: left, center, center;
+
+    main {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+section {
+    padding-top: var(--nav-height);
+    height: 100vh;
+}
+
+.stroke {
+    -webkit-text-stroke: 3px white;
+    // text-stroke: 1px white;
+    color: transparent;
+}
+
+canvas {
+    image-rendering: -moz-crisp-edges;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: pixelated;
+    image-rendering: optimize-contrast;
+}
+
+.cardscont {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 20px;
+
+    div > h2 {
+        text-transform: uppercase;
+        @apply text-lg text-yellow-400;
+    }
+
+    div > p {
+        @apply font-montserrat text-sm;
+    }
+}
