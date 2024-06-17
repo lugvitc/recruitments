@@ -4,7 +4,6 @@ import Card from '../components/Card';
 import { SessionContext, supabase } from '../supabase';
 import './mainbg.scss';
 import { useNavigate } from 'react-router-dom';
-import { ORIGIN } from '../constants';
 
 
 export default function Login() {
@@ -26,7 +25,7 @@ export default function Login() {
                         onClick={() => {supabase.auth.signInWithOAuth({
                             provider: "google",
                             options: {
-                                redirectTo: `${ORIGIN}/auth/`
+                                redirectTo: `${window.location.origin}/auth/`
                             }
                         })}}>
                         <div className='bg-yellow-400 p-2 rounded-l-md'><img src='/google.svg' className=' h-8 w-8'/></div>
