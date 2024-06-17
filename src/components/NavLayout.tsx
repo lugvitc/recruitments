@@ -4,7 +4,7 @@ import NavBar from "./navbar";
 export default function() {
 	return (
 		<>
-			<NavBar auth={false} />
+			<NavBar />
 			<Outlet />
 		</>
 	)
