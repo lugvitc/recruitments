@@ -39,7 +39,7 @@ export default function Login() {
                             }).then((resp) => {
                                 console.log(resp)
                                 if (resp.error) {
-                                    alert("This service is currently unavailable");
+                                    alert(`Something went wrong: ${resp.error.status} ${resp.error.message}`);
                                     return;
                                 }
                                 const now = Date.now() / 1000;
@@ -65,7 +65,7 @@ export default function Login() {
                                     <label htmlFor='email' className='-mb-4 ml-1'>
                                         Email
                                     </label>
-                                    <Field type="email" name="email" id="email" placeholder="example@example.com"></Field>
+                                    <Field type="email" name="email" id="email" placeholder="example@example.com" required></Field>
                                     <button
                                         className={ "flex items-center rounded-md text-center text-black font-semibold transition-all border w-full" + (
                                             (sentAt > 0 || isSubmitting) ? " bg-yellow-700 border-yellow-700" : " bg-yellow-400 hover:bg-black hover:text-white border-yellow-400"
