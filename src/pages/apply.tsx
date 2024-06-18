@@ -312,7 +312,7 @@ export default function Apply() {
                             <div className=' border-2 sm:rounded-md sm:w-fit w-full max-w-[640px] border-[#202020] text-white backdrop-blur-md bg-[#ffffff09]'>
                                 {
                                     (count || 0) < 2 ? (
-                                        <Formik initialValues={{ apps: [], name: session?.user?.user_metadata?.full_name, common_questions: []}} onSubmit={onSumbitFactory(sig, setSig, session)} validate={validateForm}>
+                                        <Formik initialValues={{ apps: [], name: session?.user?.user_metadata?.full_name || "", common_questions: []}} onSubmit={onSumbitFactory(sig, setSig, session)} validate={validateForm}>
                                             { Application }
                                         </Formik>
                                     ) : (
