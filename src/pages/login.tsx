@@ -95,7 +95,7 @@ export default function Login() {
                             <div className='p-2 w-full'>Continue with Google</div>
                         </button>
                     </div>
-                    <span className='text-sm'>Authenticate with yourself to secure your application</span>
+                    <span className='text-sm'>Authenticate yourself to secure your application</span>
                 </Card>
             </main>
         </section>
