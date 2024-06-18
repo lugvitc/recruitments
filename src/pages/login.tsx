@@ -76,12 +76,10 @@ export default function Login() {
                                         <div className={'p-2 rounded-l-md ' + ((sentAt > 0 || isSubmitting) ? "" : " bg-yellow-400")}><img src='/mail.svg' className=' h-8 w-8'/></div>
                                         <div className='p-2 w-full'>Continue with Email</div>
                                     </button>
-                                    <div className='text-sm'>
-                                    {sentAt <= 0 && isSubmitting ? "Sending email..." : ""}
+                                    {sentAt <= 0 && isSubmitting ? (<div className='text-sm'>Sending email...</div>) : ""}
                                     {sentAt > 0 ? (
-                                        `Check you email for login link${ left > 0 ? `, get another link in ${left} seconds` : null }`
+                                        (<div className='text-sm'>Check you email for login link{ left > 0 ? `, get another link in ${left} seconds` : null } </div>)
                                     ) : null}
-                                    </div>
                                 </Form>
                             )}
                         </Formik>
