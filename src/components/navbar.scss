@@ -26,6 +26,20 @@ nav {
 
     font-size: var(--nav-font-size);
 
+    div.sec-left {
+        @media (max-width: 475px) {
+            div {
+                display: none;
+            }
+        }
+
+        @media (max-width: 310px) {
+            img {
+                display: none;
+            }
+        }
+    }
+
     a:hover, button:hover {
         @apply text-yellow-400;
         font-weight: 500;

@@ -20,7 +20,7 @@ export default function NavBar() {
     return (
         <nav ref={nref}>
             <div className=" max-w-[100rem] pnav lg:mx-auto xl:px-16">
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-4 sec-left">
                     <img className="h-10" src="/favicon.ico"/>
                     <div className=" border p-2 font-montserrat">LUGVITC</div>
                 </div>
