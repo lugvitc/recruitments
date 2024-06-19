@@ -163,6 +163,10 @@ function Application({ values, isSubmitting, isValidating}: any) {
                 Name
             </label>
             <Field name={`name`} required />
+            <label htmlFor='regno'>
+                Registration Number
+            </label>
+            <Field name={`regno`} required />
             <label htmlFor='contact'>
                 Contact number
             </label>
@@ -245,6 +249,7 @@ function onSumbitFactory(sig: number, setSig: (arg0: number) => any, session: an
         common.email = session.user.email
         common.contact = values.contact
         common.name = values.name
+        common.regno = values.regno.trim().toLowerCase()
 
         // const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
         // await sleep(2000);
