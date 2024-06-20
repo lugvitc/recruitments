@@ -44,7 +44,9 @@ export default function Root() {
             <div className="bg-[#0000008e] rounded-md p-4">
               <h1 className="text-5xl uppercase font-mono">
                 Be a <br /> part of the <br />
-                <span className=" italic text-yellow-400">Best</span>
+                <span className=" italic text-yellow-400 font-semibold">
+                  Best
+                </span>
               </h1>
               <p className=" w-80 font-mono">
                 Linux User's Group VITC is a place where people passionate about
@@ -56,7 +58,9 @@ export default function Root() {
         <section className=" min-h-screen h-fit flex flex-col justify-center items-center px-4">
           <h1 className="text-5xl uppercase font-mono my-10">
             Our <br />
-            <span className=" italic text-yellow-400">Departments</span>
+            <span className=" italic text-yellow-400 font-semibold">
+              Departments
+            </span>
           </h1>
           <div className="cardscont max-w-[730px] w-4/5 font-mono">
             <Card className="">
@@ -100,7 +104,9 @@ export default function Root() {
             <div className="bg-[#0000008e] rounded-md p-4">
               <h1 className="text-5xl uppercase font-mono">
                 Empower <br />
-                <span className=" italic text-yellow-400">FOSS</span>
+                <span className=" italic text-yellow-400 font-semibold">
+                  FOSS
+                </span>
               </h1>
               <p className=" w-80 font-mono">
                 The Linux club empowers FOSS among the student body by fostering
@@ -114,7 +120,9 @@ export default function Root() {
             <div className="bg-[#0000008e] rounded-md p-4">
               <h1 className="text-5xl uppercase font-mono">
                 Be <br />
-                <span className=" italic text-yellow-400">Valued</span>
+                <span className=" italic text-yellow-400 font-semibold">
+                  Valued
+                </span>
               </h1>
               <p className=" w-80 font-mono">
                 At the Linux Club, we deeply value each member and their
@@ -131,7 +139,9 @@ export default function Root() {
                 What are <br />
                 you waiting <br />
                 for? <br />
-                <span className=" italic text-yellow-400">Join us now.</span>
+                <span className="italic text-yellow-400 font-semibold">
+                  Join us now.
+                </span>
               </h1>
               <Link
                 to="/apply"
