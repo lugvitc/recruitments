@@ -20,8 +20,6 @@ export default function Root() {
               <span className=" italic text-yellow-400 font-semibold">
                 Elite
               </span>
-              <br />
-              Team
             </div>
             <Link
               to="/apply"
