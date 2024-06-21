@@ -44,7 +44,7 @@ const questions: { [key: string]: (string | any)[] | undefined } = {
     "Which attack consists of making a malicious request to another website?",
     "A web vulnerability arising from improper sanitisation of user content and use of .innerHtml?",
     "What is a buffer overflow, what capabilities can you gain from this vulnerability?",
-    "A process has a secret hash, it takes an input and performs a simple equality check against the hash. What vulnerability can be employed to guess the secret if memory acess is not possible?",
+    "A process has a secret hash, it takes an input and performs a simple equality check against the hash. What vulnerability can be employed to guess the secret if memory access is not possible?",
   ],
 
   meda_social: [
@@ -61,6 +61,7 @@ const questions: { [key: string]: (string | any)[] | undefined } = {
     "Any additional information or comments you would like to share?",
   ],
   media_photo: [
+    "Link to Portfolio and, if available, resume.",
     "Do you have experience in photographing events?",
     "How long are you willing to spend at an event hosted by the Linux Club to film and photograph?",
     "Can you put together engaging, fast-paced reels with lots of personality?",
