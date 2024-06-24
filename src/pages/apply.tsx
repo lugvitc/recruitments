@@ -352,7 +352,7 @@ export default function Apply() {
             </div>
           )) : (
 			<div className=" border-2 sm:rounded-md sm:w-fit w-full max-w-[640px] border-[#202020] text-white backdrop-blur-md bg-[#ffffff09] p-8">
-				Applications have been closed, thank for your interest.
+				Applications have been closed, thank you for your interest.
 			</div>
 		  )}
         </CountContext.Provider>
