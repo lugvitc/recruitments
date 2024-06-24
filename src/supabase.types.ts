@@ -11,32 +11,38 @@ export type Database = {
     Tables: {
       applicants: {
         Row: {
-          contact: string | null
+          contact: string
           created_at: string
           dep: string
           email: string
           formdata: Json
           id: number
+          name: string
+          regno: string
           shortlisted: boolean
           slot: number | null
         }
         Insert: {
-          contact?: string | null
+          contact?: string
           created_at?: string
           dep: string
-          email: string
+          email?: string
           formdata?: Json
           id?: number
+          name?: string
+          regno?: string
           shortlisted?: boolean
           slot?: number | null
         }
         Update: {
-          contact?: string | null
+          contact?: string
           created_at?: string
           dep?: string
           email?: string
           formdata?: Json
           id?: number
+          name?: string
+          regno?: string
           shortlisted?: boolean
           slot?: number | null
         }
@@ -50,27 +56,54 @@ export type Database = {
           },
         ]
       }
+      bookedpvt: {
+        Row: {
+          contact: string | null
+          dep: string | null
+          email: string | null
+          id: number
+          name: string | null
+          regno: string | null
+          timing: string | null
+        }
+        Insert: {
+          contact?: string | null
+          dep?: string | null
+          email?: string | null
+          id?: number
+          name?: string | null
+          regno?: string | null
+          timing?: string | null
+        }
+        Update: {
+          contact?: string | null
+          dep?: string | null
+          email?: string | null
+          id?: number
+          name?: string | null
+          regno?: string | null
+          timing?: string | null
+        }
+        Relationships: []
+      }
       slots: {
         Row: {
           capacity: number
           dep: string
           id: number
-          length: number
-          start: string
+          timing: string
         }
         Insert: {
           capacity?: number
           dep: string
           id?: number
-          length?: number
-          start: string
+          timing: string
         }
         Update: {
           capacity?: number
           dep?: string
           id?: number
-          length?: number
-          start?: string
+          timing?: string
         }
         Relationships: []
       }
@@ -79,7 +112,13 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      bookslot: {
+        Args: {
+          slot_id: number
+          applicant: number
+        }
+        Returns: boolean
+      }
     }
     Enums: {
       [_ in never]: never

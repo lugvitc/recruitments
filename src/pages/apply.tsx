@@ -12,7 +12,7 @@ import { SessionContext, supabase } from "../supabase";
 import { useNavigate } from "react-router-dom";
 // import { useEffect, useRef } from 'react';
 
-const departments = {
+export const departments = {
   management: "Management",
   mms: "Marketing and Sponsorhips",
   cont: "Content",
@@ -307,6 +307,7 @@ export default function Apply() {
   const [sig, setSig] = useState(0);
 
   useEffect(() => {
+    // alert(session)
     if (session === null) {
       navigate("/auth");
       return;
