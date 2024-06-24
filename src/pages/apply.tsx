@@ -299,6 +299,8 @@ function onSumbitFactory(
   return onSubmit;
 }
 
+const open = false;
+
 export default function Apply() {
   const session = useContext(SessionContext);
   const navigate = useNavigate();
@@ -324,7 +326,7 @@ export default function Apply() {
     <section className={(session !== null ? "apply" : "") + " main"}>
       <main>
         <CountContext.Provider value={count || 0}>
-          {session !== null ? (
+          {open ? (session !== null ? (
             <div className=" border-2 sm:rounded-md sm:w-fit w-full max-w-[640px] border-[#202020] text-white backdrop-blur-md bg-[#ffffff09]">
               {(count || 0) < 2 ? (
                 <Formik
@@ -348,7 +350,11 @@ export default function Apply() {
             <div>
               <span className="text-2xl">Not logged in</span>
             </div>
-          )}
+          )) : (
+			<div className=" border-2 sm:rounded-md sm:w-fit w-full max-w-[640px] border-[#202020] text-white backdrop-blur-md bg-[#ffffff09] p-8">
+				Applications have been closed, thank for your interest.
+			</div>
+		  )}
         </CountContext.Provider>
       </main>
     </section>
