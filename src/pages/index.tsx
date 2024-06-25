@@ -23,7 +23,7 @@ export default function Root() {
                 Elite
               </span>
             </div>
-            {!rec_open ? (<div className=" w-52 font-semibold">Recruitments are closed</div>) : null}
+            {!rec_open ? (<div className=" w-52 font-semibold">Recruitments are closed <br />Join the <a href="https://chat.whatsapp.com/KdZQ7vmM4JSFjTJSx7togp" className=" underline text-blue-500">whatsapp group</a> if you have applied</div>) : null}
             <Link
               aria-disabled="true"
               to="/apply"
