@@ -21,6 +21,7 @@ export default function Root() {
                 Elite
               </span>
             </div>
+            <div className=" w-52 font-semibold">Recruitments close at <wbr/> midnigth June 25</div>
             <Link
               to="/apply"
               className=" rounded-md text-xl mt-4 text-center p-2 bg-yellow-400 text-black uppercase font-semibold hover:bg-black hover:text-white transition-all border border-yellow-400"
