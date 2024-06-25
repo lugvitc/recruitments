@@ -4,6 +4,8 @@ import Card from "../components/Card";
 
 import "./index.scss";
 
+export const rec_open = false;
+
 export default function Root() {
   // const txtsh = "0px 0px 2px rgb(250 204 21)";
   //   style={{textShadow: `${txtsh}` }}
@@ -21,10 +23,16 @@ export default function Root() {
                 Elite
               </span>
             </div>
-            <div className=" w-52 font-semibold">Recruitments close at <wbr/> midnigth June 25</div>
+            {!rec_open ? (<div className=" w-52 font-semibold">Recruitments are closed</div>) : null}
             <Link
+              aria-disabled="true"
               to="/apply"
-              className=" rounded-md text-xl mt-4 text-center p-2 bg-yellow-400 text-black uppercase font-semibold hover:bg-black hover:text-white transition-all border border-yellow-400"
+              className={
+                "rounded-md mt-4 text-xl text-center p-2 text-black font-semibold transition-all border" +
+                (!rec_open
+                  ? " bg-yellow-700 border-yellow-700 pointer-events-none"
+                  : " bg-yellow-400 hover:bg-black hover:text-white border-yellow-400")
+              }
             >
               Apply
             </Link>
@@ -144,7 +152,12 @@ export default function Root() {
               </h1>
               <Link
                 to="/apply"
-                className=" rounded-md text-xl mt-4 text-center p-2 bg-yellow-400 text-black uppercase font-semibold hover:bg-black hover:text-white transition-all border border-yellow-400"
+                className={
+                  "rounded-md mt-4 text-xl text-center p-2 text-black font-semibold transition-all border" +
+                  (!rec_open
+                    ? " bg-yellow-700 border-yellow-700 pointer-events-none"
+                    : " bg-yellow-400 hover:bg-black hover:text-white border-yellow-400")
+                }
               >
                 Apply
               </Link>
