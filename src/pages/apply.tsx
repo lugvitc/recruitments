@@ -10,6 +10,7 @@ import {
 } from "react";
 import { SessionContext, supabase } from "../supabase";
 import { useNavigate } from "react-router-dom";
+import { rec_open } from ".";
 // import { useEffect, useRef } from 'react';
 
 const departments = {
@@ -299,7 +300,7 @@ function onSumbitFactory(
   return onSubmit;
 }
 
-const open = true;
+// const open = true;
 
 export default function Apply() {
   const session = useContext(SessionContext);
@@ -326,7 +327,7 @@ export default function Apply() {
     <section className={(session !== null ? "apply" : "") + " main"}>
       <main>
         <CountContext.Provider value={count || 0}>
-          {open ? (session !== null ? (
+          {rec_open ? (session !== null ? (
             <div className=" border-2 sm:rounded-md sm:w-fit w-full max-w-[640px] border-[#202020] text-white backdrop-blur-md bg-[#ffffff09]">
               {(count || 0) < 2 ? (
                 <Formik
