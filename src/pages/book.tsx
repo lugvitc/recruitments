@@ -9,6 +9,74 @@ import "./mainbg.scss";
 
 const CountContext = createContext<number>(0);
 
+// const released: Set<string> = new Set(["cont", "mms"]);
+
+interface App {
+    id: number;
+    dep: string;
+    slot: number | null;
+    shortlisted: boolean;
+};
+
+interface Slot {
+    capacity: number;
+    dep: string;
+    id: number;
+    timing: string;
+};
+
+function SlotSelect({ap, rawSlots}: {ap: App, rawSlots: Slot[]}) {
+    const slots = rawSlots.filter((slot) => {
+        return slot.dep === ap.dep && slot.capacity > 0;
+    });
+
+    if (ap.slot !== null) {
+        const k = rawSlots.find((sl) => sl.id === ap.slot)
+        return (
+            <div>Your slot has been booked for <span className="italic">{k!.timing}</span></div>
+        )
+    }
+
+    if (ap.shortlisted === false) {
+        if (rawSlots.find((slot) => slot.dep === ap.dep) === undefined) return (
+            <div>We are yet to release the result for this department</div>
+        )
+        else return (
+            <div>Unfortunately you weren't shortlisted</div>
+        )
+    }
+
+    if (slots.length === 0) {
+        if (rawSlots.find((slot) => slot.dep === ap.dep) !== undefined) return (
+            <div>No slots left, please contact us.</div>
+        )
+        else return (
+            <div>You were shortlisted, check back later to book your slot</div>
+        )
+    }
+
+    return (
+        <Field name={`slots.${ap.id}`} as="select">
+            <option
+                disabled
+                value="none"
+                style={true ? { display: "none" } : {}}
+            >
+                None
+            </option>
+            {
+                slots.map(
+                    (slot, idx) => (
+                        <option key={idx} value={slot.id}>
+                            {slot.timing} - {slot.capacity} slots left
+                        </option>
+                    )
+                )
+            }
+        </Field>
+    )
+}
+
 function onSumbitFactory(
     sig: number,
     setSig: (arg0: number) => any,
@@ -20,7 +88,7 @@ function onSumbitFactory(
     }[]
 ) {
     async function onSubmit(values: any, formikBag: any) {
-        const promises = Object.entries(values.slots).map((v) => ({
+        const promises = Object.entries(values.slots).filter((ent) => ent[1] != "none").map((v) => ({
             slot_id: parseInt(v[1] as string),
             applicant: parseInt(v[0]),
         })).map(
@@ -52,21 +120,12 @@ ${resp.error.code} ${resp.error.message}`);
 
 export default function Book() {
     const session = useContext(SessionContext);
-    const [_app, setApp] = useState<{
-        id: number;
-        dep: string;
-        slot: number | null;
-        shortlisted: boolean;
-    }[]>([])
+    const [_app, setApp] = useState<App[]>([])
 
-    const app = _app.filter((ap) => ap.slot === null && ap.shortlisted === true)
+    // const app = _app.filter((ap) => ap.slot === null && ap.shortlisted === true)
+    const app = _app;
 
-    const [rawSlots, setRawSlots] = useState<{
-        capacity: number;
-        dep: string;
-        id: number;
-        timing: string;
-    }[]>([])
+    const [rawSlots, setRawSlots] = useState<Slot[]>([])
 
     const count = app.length;
 
@@ -89,6 +148,7 @@ export default function Book() {
         supabase
             .from("slots")
             .select()
+            .order("id", {ascending: true})
             .then((records) => {
                 setRawSlots(records.data || [])
             })
@@ -122,7 +182,7 @@ export default function Book() {
                     }}
                     onSubmit={onSumbitFactory(sig, setSig, app)}
                     validate={(values) => {
-                        if (Object.keys(values.slots).length !== app.length) return {slots: "Please select slots for all interviews, kindly contact us if no slots are left."}
+                        if (Object.values(values.slots).filter((v) => v !== "none").length === 0) return {slots: "Please select atleast one slot for booking"}
                         return {}
                     }}
                   >
@@ -132,29 +192,10 @@ export default function Book() {
                             {app.map(
                                 (ap, idx) => (
                                     <Fragment key={idx}>
-                                        <label>
+                                        <label htmlFor={`slots.${ap.id}`}>
                                             {departments[ap.dep as (keyof typeof departments)]} Interview Slot
                                         </label>
-                                        <Field name={`slots.${ap.id}`} as="select">
-                                            <option
-                                                disabled
-                                                value="none"
-                                                style={true ? { display: "none" } : {}}
-                                            >
-                                                None
-                                            </option>
-                                            {
-                                                rawSlots.filter((slot) => {
-                                                    return slot.dep === ap.dep && slot.capacity > 0;
-                                                }).map(
-                                                    (slot, idx) => (
-                                                        <option key={idx} value={slot.id}>
-                                                            {slot.timing} - {slot.capacity} slots left
-                                                        </option>
-                                                    )
-                                                )
-                                            }
-                                        </Field>
+                                        <SlotSelect ap={ap} rawSlots={rawSlots}/>
                                     </Fragment>
                                 )
                             )}
@@ -178,32 +219,8 @@ export default function Book() {
                     }
                   </Formik>
                 ) : (
-                  <div className="p-8 text-xl">
-                    {
-                        _app.filter((ap) => ap.shortlisted === true).length > 0 ?
-                        (
-                            <>
-                                Your slots have been booked
-                                <ul className="flex p-2 flex-col gap-2">
-                                {_app.map(
-                                    (ap, idx) => {
-                                        const k = rawSlots.find((sl) => sl.id === ap.slot)
-                                        if (k !== undefined) return (
-                                            <li key={idx}>
-                                            <span className="font-bold">{departments[(k.dep as (keyof typeof departments))]}</span>
-                                            <br/><span className="italic">{k.timing}</span>
-                                            </li>
-                                        )
-                                    }
-                                )}
-                                </ul>
-                            </>
-                        ) :
-                        (<>
-                            Unfortunately you weren't shortlisted for interviewing,<br/>
-                            but you are still awesome for being passionate about linux {":)"}
-                        </>)
-                    }
+                  <div className="p-8 text-lg">
+                    It seems like you haven't applied. You can't participate in the interviews.
                   </div>
                 )}
               </div>
