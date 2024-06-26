@@ -6,6 +6,7 @@ import Login from "./pages/login"
 import Apply from "./pages/apply"
 import { useEffect, useState } from "react"
 import { supabase, SessionContext } from "./supabase"
+import Book from "./pages/book"
 
 const router = createBrowserRouter(
 	createRoutesFromElements(
@@ -13,7 +14,8 @@ const router = createBrowserRouter(
 			<Route element={<NavLayout />}>
 				<Route path="/" element={<Root />} />
 				<Route path="auth" element={<Login />} />
-				<Route path="apply" element={<Apply />}/>
+				<Route path="apply" element={<Apply />} />
+				<Route path="book" element={<Book />} />
 			</Route>
 		</>
 	)
@@ -27,7 +29,7 @@ export default function App() {
 	useEffect(() => {
 		// supabase.auth.getSession().then(({ data: { session } }) => setSession(session))
 
-		supabase.auth.onAuthStateChange((_event, session) => { setSession(session);} )
+		supabase.auth.onAuthStateChange((_event, session) => { setSession(session); console.log(_event, session)} )
 	}, [])
 
 	return (

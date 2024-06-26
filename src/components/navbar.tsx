@@ -28,7 +28,7 @@ export default function NavBar() {
         </div>
         <div className=" flex justify-center items-center gap-4 sm:gap-8">
           <Link to="/">Home</Link>
-          <Link to="/apply">Apply</Link>
+          <Link to="/book">Book</Link>
           {session !== null ? (
             <button
               onClick={() =>
@@ -39,7 +39,9 @@ export default function NavBar() {
             >
               Log Out
             </button>
-          ) : null}
+          ) : (
+            <Link to="/auth">Log In</Link>
+          )}
         </div>
       </div>
     </nav>
