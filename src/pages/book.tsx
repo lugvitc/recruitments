@@ -155,7 +155,10 @@ export default function Book() {
 
     }, [session?.user?.email, sig]);
 
-    if (session === null) return <Navigate to={"/auth"} /> // make a protected layout
+    if (session === null) {
+        localStorage.setItem("redirect", "/book");
+        return <Navigate to={"/auth"} />
+    } // make a protected layout
 
     // useEffect(() => {
     //     supabase

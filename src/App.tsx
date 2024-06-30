@@ -7,6 +7,7 @@ import Apply from "./pages/apply"
 import { useEffect, useState } from "react"
 import { supabase, SessionContext } from "./supabase"
 import Book from "./pages/book"
+import Level from "./pages/level"
 
 const router = createBrowserRouter(
 	createRoutesFromElements(
@@ -16,6 +17,7 @@ const router = createBrowserRouter(
 				<Route path="auth" element={<Login />} />
 				<Route path="apply" element={<Apply />} />
 				<Route path="book" element={<Book />} />
+				<Route path="admin" element={<Level />} />
 			</Route>
 		</>
 	)
@@ -29,7 +31,7 @@ export default function App() {
 	useEffect(() => {
 		// supabase.auth.getSession().then(({ data: { session } }) => setSession(session))
 
-		supabase.auth.onAuthStateChange((_event, session) => { setSession(session); console.log(_event, session)} )
+		supabase.auth.onAuthStateChange((_event, session) => { setSession(session); console.log(_event, session) })
 	}, [])
 
 	return (
