@@ -21,7 +21,7 @@ export default function Login() {
     useEffect(() => {
         if (session !== null) {
             // navigate("/apply");
-            navigate("/book");
+            navigate(localStorage.getItem("redirect") ?? "/");
         }
     })
 
