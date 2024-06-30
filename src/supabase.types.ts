@@ -86,6 +86,27 @@ export type Database = {
         }
         Relationships: []
       }
+      levels: {
+        Row: {
+          created_at: string
+          email: string
+          id: number
+          level: number | null
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: number
+          level?: number | null
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: number
+          level?: number | null
+        }
+        Relationships: []
+      }
       slots: {
         Row: {
           capacity: number
@@ -107,6 +128,30 @@ export type Database = {
         }
         Relationships: []
       }
+      stages: {
+        Row: {
+          id: number
+          level: number
+          password: string
+          redirect: string
+          username: string
+        }
+        Insert: {
+          id?: number
+          level: number
+          password: string
+          redirect?: string
+          username: string
+        }
+        Update: {
+          id?: number
+          level?: number
+          password?: string
+          redirect?: string
+          username?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
@@ -118,6 +163,32 @@ export type Database = {
           applicant: number
         }
         Returns: boolean
+      }
+      get_level: {
+        Args: {
+          p_username: string
+          p_password: string
+          p_email: string
+        }
+        Returns: number
+      }
+      returnbookings: {
+        Args: {
+          department: string
+        }
+        Returns: {
+          email: string
+          contact: string
+          regno: string
+        }[]
+      }
+      update_level_redirect: {
+        Args: {
+          username_param: string
+          password_param: string
+          email_param: string
+        }
+        Returns: string
       }
     }
     Enums: {
