@@ -2,7 +2,7 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import { createContext, Fragment, useContext, useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
 import { SessionContext, supabase } from "../supabase";
-import { departments } from "./apply";
+import { departments as _d } from "./apply";
 import "./apply.scss";
 import "./mainbg.scss";
 
@@ -10,6 +10,8 @@ import "./mainbg.scss";
 const CountContext = createContext<number>(0);
 
 // const released: Set<string> = new Set(["cont", "mms"]);
+
+const departments = Object.assign({ tech: "Technical" }, _d);
 
 interface App {
     id: number;
