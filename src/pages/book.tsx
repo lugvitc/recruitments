@@ -34,6 +34,11 @@ function SlotSelect({ap, rawSlots}: {ap: App, rawSlots: Slot[]}) {
 
     if (ap.slot !== null) {
         const k = rawSlots.find((sl) => sl.id === ap.slot)
+        if(k === undefined){
+            return (
+                <div>Something went wrong, please go back to the home page and then click "book" on the top right</div>
+            )
+        }
         return (
             <div>Your slot has been booked for <span className="italic">{k!.timing}</span></div>
         )
