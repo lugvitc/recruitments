@@ -5,6 +5,7 @@ import Card from "../components/Card";
 import "./index.scss";
 
 export const rec_open = false;
+export const results = !rec_open && true;
 
 export default function Root() {
   // const txtsh = "0px 0px 2px rgb(250 204 21)";
@@ -23,7 +24,8 @@ export default function Root() {
                 Elite
               </span>
             </div>
-            {!rec_open ? (<div className=" w-52 font-semibold">Recruitments are closed <br />Join the <a href="https://chat.whatsapp.com/KdZQ7vmM4JSFjTJSx7togp" className=" underline text-blue-500">whatsapp group</a> if you have applied</div>) : null}
+            {/* <br />Join the <a href="https://chat.whatsapp.com/KdZQ7vmM4JSFjTJSx7togp" className=" underline text-blue-500">whatsapp group</a> if you have applied */}
+            {!rec_open ? (<div className=" w-52 font-semibold">{results ? ("Results are released!") : ("Recruitments are closed")}</div>) : null}
             <Link
               aria-disabled="true"
               to="/apply"

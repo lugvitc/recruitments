@@ -8,6 +8,7 @@ import { useEffect, useState } from "react"
 import { supabase, SessionContext } from "./supabase"
 import Book from "./pages/book"
 import Level from "./pages/level"
+import Result from "./pages/results"
 
 const router = createBrowserRouter(
 	createRoutesFromElements(
@@ -18,6 +19,7 @@ const router = createBrowserRouter(
 				<Route path="apply" element={<Apply />} />
 				<Route path="book" element={<Book />} />
 				<Route path="admin" element={<Level />} />
+				<Route path="result" element={<Result />} />
 			</Route>
 		</>
 	)
