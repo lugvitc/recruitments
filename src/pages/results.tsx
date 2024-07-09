@@ -24,7 +24,7 @@ export default function Result() {
     const session = useContext(SessionContext);
     const [dep, setDep] = useState<App[]>([]);
 
-    const departments = dep.map((v) => (lookup[v.dep] || "").toLowerCase());
+    const departments = Array.from((new Set(dep.map((v) => (lookup[v.dep] || "").toLowerCase()))).values());
 
     useEffect(() => {
         if (session === null) return
