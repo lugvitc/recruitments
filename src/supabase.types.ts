@@ -19,6 +19,56 @@ export type Database = {
           id: number
           name: string
           regno: string
+          selected: boolean
+          shortlisted: boolean
+          slot: number | null
+        }
+        Insert: {
+          contact?: string
+          created_at?: string
+          dep: string
+          email?: string
+          formdata?: Json
+          id?: number
+          name?: string
+          regno?: string
+          selected?: boolean
+          shortlisted?: boolean
+          slot?: number | null
+        }
+        Update: {
+          contact?: string
+          created_at?: string
+          dep?: string
+          email?: string
+          formdata?: Json
+          id?: number
+          name?: string
+          regno?: string
+          selected?: boolean
+          shortlisted?: boolean
+          slot?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "applicants_slot_fkey"
+            columns: ["slot"]
+            isOneToOne: false
+            referencedRelation: "slots"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      applicants_archive: {
+        Row: {
+          contact: string
+          created_at: string
+          dep: string
+          email: string
+          formdata: Json
+          id: number
+          name: string
+          regno: string
           shortlisted: boolean
           slot: number | null
         }
@@ -48,7 +98,7 @@ export type Database = {
         }
         Relationships: [
           {
-            foreignKeyName: "applicants_slot_fkey"
+            foreignKeyName: "applicants_archive_slot_fkey"
             columns: ["slot"]
             isOneToOne: false
             referencedRelation: "slots"
@@ -88,22 +138,28 @@ export type Database = {
       }
       levels: {
         Row: {
+          completed: boolean | null
           created_at: string
           email: string
           id: number
-          level: number | null
+          level: number
+          tg: boolean | null
         }
         Insert: {
+          completed?: boolean | null
           created_at?: string
           email: string
           id?: number
-          level?: number | null
+          level?: number
+          tg?: boolean | null
         }
         Update: {
+          completed?: boolean | null
           created_at?: string
           email?: string
           id?: number
-          level?: number | null
+          level?: number
+          tg?: boolean | null
         }
         Relationships: []
       }
@@ -149,6 +205,18 @@ export type Database = {
           password?: string
           redirect?: string
           username?: string
+        }
+        Relationships: []
+      }
+      tg: {
+        Row: {
+          email: string
+        }
+        Insert: {
+          email: string
+        }
+        Update: {
+          email?: string
         }
         Relationships: []
       }

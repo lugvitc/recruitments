@@ -1,7 +1,7 @@
 import { Canvas, useFrame } from "@react-three/fiber";
-import { useTransform, useScroll, useTime } from "framer-motion";
-import { BufferAttribute, Vector3 } from "three";
-import { useMemo } from "react";
+import { useTransform, useScroll, useTime, useMotionValue,} from "framer-motion";
+import { BufferAttribute, DodecahedronGeometry, Vector3 } from "three";
+import { useEffect, useMemo } from "react";
 
 function Icosahedron() {
 	return (
@@ -9,6 +9,27 @@ function Icosahedron() {
 			<icosahedronGeometry args={[1, 0]} />
 			<meshBasicMaterial wireframe color={rgb(250, 204, 21)} />
 		</mesh>
+	)
+};
+
+function Dodecahedron() {
+	return (
+		<>
+			<mesh rotation-x={0} rotation-z={2 * Math.PI}>
+				<lineSegments>
+					<edgesGeometry args={[new DodecahedronGeometry()]}>
+					</edgesGeometry>
+					<lineBasicMaterial color={rgb(255, 200, 21)}/>
+				</lineSegments>
+			</mesh>
+			{/* <mesh rotation-x={0} rotation-z={2 * Math.PI} scale={0.5}>
+				<lineSegments>
+					<edgesGeometry args={[new OctahedronGeometry()]}>
+					</edgesGeometry>
+					<lineBasicMaterial color={rgb(250, 70, 21)} linewidth={1} />
+				</lineSegments>
+			</mesh> */}
+		</>
 	)
 };
 
@@ -76,6 +97,74 @@ function Scene() {
 			<Icosahedron />
 			<Dots />
 		</>
+	)
+}
+
+function OrbitScene() {
+	const _scrollYProgress = useMotionValue(0);
+	const _scrollX = useMotionValue(0);
+
+	useEffect(() => {
+		let y = 0;
+		let x = 0;
+		const listener = (ev: MouseEvent) => {
+			y = ev.clientY / window.innerHeight;
+			x = ev.clientX / window.innerWidth;
+		};
+
+		const touch_listener = (ev: TouchEvent) => {
+			y = ev.touches[0].clientY / window.innerHeight;
+			x = ev.touches[0].clientX / window.innerWidth;
+		}
+
+		const loop = () => {
+			_scrollYProgress.set(_scrollYProgress.get() + 0.005 * (y - _scrollYProgress.get()));
+			_scrollX.set(_scrollX.get() + 0.005 * (x - _scrollX.get()));
+			raf = requestAnimationFrame(loop);
+		}
+
+		document.addEventListener("touchmove", touch_listener);
+		document.addEventListener("mousemove", listener);
+		let raf = requestAnimationFrame(loop);
+		return () => {document.removeEventListener("touchmove", touch_listener); document.removeEventListener("mousemove", listener); cancelAnimationFrame(raf);}
+	})
+	// const gl = useThree((state) => state.gl);
+	// const scrollYProgress = useTransform(_scrollYProgress, [0, 1], [0, 1], {ease: easeInOut});
+	const yAngle = useTransform(
+	  _scrollYProgress,
+	  [0, 1],
+	  [Math.PI, 0.0000001],
+	);
+	const distance = useTransform(_scrollYProgress, [0, 1], [7, 5]);
+	const time = useTime();
+
+	useFrame(({ camera }) => {
+	  camera.position.setFromSphericalCoords(
+		distance.get(),
+		yAngle.get(),
+		time.get() * 0.0001 + (1 - _scrollX.get()) * Math.PI
+	  );
+	  camera.updateProjectionMatrix();
+	  camera.lookAt(0, 0, 0);
+	});
+
+	// useLayoutEffect(() => gl.setPixelRatio(0.5))
+
+	return (
+		<>
+			<Dodecahedron />
+			<Dots />
+		</>
+	)
+}
+
+
+export function OrbitBackground() {
+	return (
+		<Canvas gl={{antialias: true}}>
+			<OrbitScene />
+			{/* <axesHelper></axesHelper> */}
+		</Canvas>
 	)
 }
 

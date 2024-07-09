@@ -28,7 +28,7 @@ export default function NavBar() {
         </div>
         <div className=" flex justify-center items-center gap-4 sm:gap-8">
           <Link to="/">Home</Link>
-          <Link to="/book">Book</Link>
+          <Link to="/result">Results</Link>
           {session !== null ? (
             <button
               onClick={() =>
