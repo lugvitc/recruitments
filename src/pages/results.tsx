@@ -33,6 +33,7 @@ export default function Result() {
             .from("applicants")
             .select("id,dep,selected")
             .eq("email", session!.user!.email!)
+            .eq("selected", true)
             .then((records) => {
                 setDep(records.data as App[] || []) // TODO validation
                 setLoaded(true);
