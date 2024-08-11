@@ -79,7 +79,7 @@ const notes: { [key: string]: (string | any)[] | undefined } = {
 
 const common_questions = [
   "Why do you want to join the Linux Club?",
-  "Have you ever used any Linux distro? Whats your favourite distro?",
+  "What other clubs/chapter are you part of? If none, input NA",
 ];
 
 const pref = [
