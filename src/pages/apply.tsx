@@ -127,7 +127,6 @@ function Questions({ dep, name }: { [key: string]: string }) {
 
 function Preference({ req, ...props }: any) {
   // console.log(onChange)
-  console.log(departments)
   return (
     <Field as="select" {...props} defaultValue="none">
       <option
@@ -306,10 +305,10 @@ export default function Apply() {
 
   useEffect(() => {
     // alert(session)
-    // if (session === null) {
-    //   navigate("/auth");
-    //   return;
-    // }
+    if (session === null) {
+      // navigate("/auth");
+      return;
+    }
     supabase
       .from("applicants")
       .select("email")
