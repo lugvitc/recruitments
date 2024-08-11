@@ -11,7 +11,7 @@ const CountContext = createContext<number>(0);
 
 // const released: Set<string> = new Set(["cont", "mms"]);
 
-export const departments = Object.assign({ tech: "Technical" }, _d);
+export const departments = _d;
 
 interface App {
     id: number;

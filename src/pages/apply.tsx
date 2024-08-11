@@ -9,83 +9,73 @@ import {
   useState,
 } from "react";
 import { SessionContext, supabase } from "../supabase";
-import { useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { rec_open } from ".";
 // import { useEffect, useRef } from 'react';
 
 export const departments = {
   management: "Management",
-  mms: "Marketing and Sponsorhips",
+  mns: "Marketing and Sponsorhips",
   cont: "Content",
-  tech_dev: "Technical - Development",
-  tech_linux: "Technical - Linux",
-  tech_cyber: "Technical - Cybersecurity",
-  meda_social: "Media - Social Media Management",
-  media_des: "Media - Designing and Editing",
-  media_photo: "Media - Event Photography",
+  media: "Media",
+  tech: "Technical",
 };
 
-const questions: { [key: string]: (string | any)[] | undefined } = {
-  tech_dev: [
-    "What is your field of expertise in development?",
-    "What development frameworks or technologies do you use? (eg: React, Python. NoSQL etc.)",
-    "Links to your github or any hosted projects",
-    "Did you notice any issues in this platform or possible ways to make it better? Describe with as technical detail as possible",
-    "Any bugfix you did in the past, that demonstrates your problem solving ability.",
-  ],
-  tech_linux: [
-    "What is a swap?",
-    "Under what user does /usr/bin/passwd run?",
-    "Interpret the permission given by chmod 4776",
-    'What is "top -i"?',
-    "What is secure boot?",
-  ],
-  tech_cyber: [
-    "What is the name of the family of vulnerabilities arising from invalid escape sequences",
-    "Which attack consists of making a malicious request to another website?",
-    "A web vulnerability arising from improper sanitisation of user content and use of .innerHtml?",
-    "What is a buffer overflow, what capabilities can you gain from this vulnerability?",
-    "A process has a secret hash, it takes an input and performs a simple equality check against the hash. What vulnerability can be employed to guess the secret if memory access is not possible?",
-  ],
+const preferences = 1;
 
-  meda_social: [
-    "Share any social media accounts you’ve managed before, if any, can also be a personal account.",
-    "How do you plan on managing social media activities along with your academics and other activities?",
-    "Propose an idea to increase engagement and followers for the Linux Club’s Instagram.",
-    "Any additional information or comments you would like to share?",
-  ],
-  media_des: [
-    "Link to Portfolio and, if available, resume.",
-    "What software do you primarily use for designing and editing",
-    "Describe a design or editing project you’ve worked on that you are particularly proud of. What was your role, and what were the results? Also, share any links to it. (Fill with NIL if not applicable)",
-    "Are you comfortable working under tight deadlines for media projects?",
-    "Any additional information or comments you would like to share?",
-  ],
-  media_photo: [
-    "Link to Portfolio and, if available, resume.",
-    "Do you have experience in photographing events?",
-    "How long are you willing to spend at an event hosted by the Linux Club to film and photograph?",
-    "Can you put together engaging, fast-paced reels with lots of personality?",
-    "How would you approach capturing good-quality photographs in challenging lighting conditions (say, MG auditorium)?",
-    "Any additional information or comments you would like to share?",
+const questions: { [key: string]: (string | any)[] | undefined } = {
+  media: [
+    "Portfolio Link / Website Link / Work Links. If multiple put everything in a text file, upload to your drive and share the link, make sure access is set to everyone",
+    "Why the media department of The Linux Club",
+    "List the tools/software you are proficient in (e.g., Adobe Photoshop, Illustrator, Figma, etc.).",
+    "Please describe your experience in media-related activities (e.g., design, photography, social media management).",
+    "What do you hope to achieve by being part of this team?",
+    "How many hours per week can you dedicate to the Linux Club’s media activities?",
+    "Describe a time when you faced a creative challenge. How did you overcome it?",
   ],
 
   management: [
-    "How would you approach the SWC to request permission to conduct an event? List out all the steps",
-    "You missed a chance to connect with your club mates, and now the team has grown closer while you feel like a stranger. Who will you approach to break the ice and fulfil your responsibilities?",
+    "What is expected of a member of the Management Department at Linux Club?",
+    "What makes you suitable for the role?",
+    "List any valuable managerial experiences.",
+    "Suppose there is an event happening and hardly 2 days are left for the event, and your team is stuck with an implementation of a particular task which is hampering the progress of planning and execution, all the teammates are down and demotivated, none of you have found a feasible solution. What would you do?"
   ],
-  mms: [
-    "Do you have prior experience in getting sponsors for events?",
-    "How would you approach a cybersecurity firm to sponsor a club CTF event?",
-    "Do you have prior experience in marketing or managing a marketing team? If so specify what you have worked upon",
-    "How would you market an umbrella in summer season?",
+
+  mns: [
+    "What do you hope to achieve by being a part of this department?",
+    "Have you had any prior experience in marketing or sponsorship roles? If yes, please elaborate.",
+    "Give an example of a creative marketing idea you have implemented or would like to implement.",
+    "You’ve organized a sponsorship deal that includes social media promotion, but the sponsor is not happy with the engagement the posts are getting. How would you address their concerns?",
   ],
+
   cont: [
-    "How familiar are you with different content formats such as articles, social media posts. Do you have a preference or specialty?",
-    "Which type of content attracts the user's eyes in your opinion and why?",
-    "Do you have prior experience in writing content for events, blogs and social media handles? If so, specify where you worked.",
+    "Why are you interested in joining the Content Team of the Linux Club?",
+    "In your opinion, what makes a piece of content engaging and effective? Feel free to provide an example of content that you think exemplifies these qualities",
+    "Have you had any previous experience in writing? If yes, please share a Drive link of your work.",
+    "Which writing format do you find yourself most confident and comfortable working with ? (eg: short,attractive pieces or long,formal content)",
+    "If you're given a task to write a report on the outcomes of a recent Hackathon , What key elements would you include? It should be informative to both participants and external individuals. Answer briefly.",
   ],
+
+  tech: [
+    "Links to your profiles/projects (for eg. Github, portfolio website etc.)",
+    "Share us your technical interests/motivations"
+  ]
 };
+
+const notes: { [key: string]: (string | any)[] | undefined } = {
+  tech: [
+    (<div className="font-mono">
+      <h3>Technical Subdepartments</h3>
+      <ul className=" list-disc text-sm ml-4">
+        <li>Development - Creating bots, building full stack applications, attending hackathons (<a href="https://github.com/lugvitc" className="intext">github.com/lugvitc</a>)</li>
+        <li>OS - Ricing, Distrohopping, creating OS derivatives (i use arch btw)</li>
+        <li>Cybersecurity - Attending CTF events, creating questions and organising CTF events. (<a href="https://ctftime.org/team/303100" className="intext">ctftime.org/team/303100</a>)</li>
+        <li>Embedded Systems - Working with routers, switches, ESP32s, camera devices etc.</li>
+        <li>DevOps - Managing and automating the infrastructure of all our services online (<a href="https://hub.lugvitc.net" className="intext">hub.lugvitc.net</a>)</li>
+      </ul>
+    </div>),
+  ]
+}
 
 const common_questions = [
   "Why do you want to join the Linux Club?",
@@ -115,6 +105,7 @@ function CommonQuestions({ name }: { name: string }) {
 function Questions({ dep, name }: { [key: string]: string }) {
   return (
     <>
+      { notes[dep] !== undefined ? notes[dep] : null }
       {questions[dep] !== undefined
         ? questions[dep]!.map((question, index) => {
             return (
@@ -136,6 +127,7 @@ function Questions({ dep, name }: { [key: string]: string }) {
 
 function Preference({ req, ...props }: any) {
   // console.log(onChange)
+  console.log(departments)
   return (
     <Field as="select" {...props} defaultValue="none">
       <option
@@ -186,12 +178,12 @@ function Application({ values, isSubmitting, isValidating }: any) {
                     </label>
                     <Preference name={`apps.${index}.dep`} req={index === 0} />
                     <Questions dep={app.dep} name={`apps.${index}.questions`} />
-                    {index !== 1 ? <hr /> : ""}
+                    {index !== preferences - 1 ? <hr /> : ""}
                   </div>
                 ))
               : ""}
 
-            {values.apps.length + count < 2 && (
+            {values.apps.length + count < preferences && (
               <>
                 <label htmlFor="temppref">
                   <h2>Department Preference {values.apps.length + 1}</h2>{" "}
@@ -203,13 +195,13 @@ function Application({ values, isSubmitting, isValidating }: any) {
                   onChange={(sel: any) => {
                     arrayHelpers.push({ dep: sel.target.value, questions: [] });
                   }}
-                  req={values.apps.length !== 1}
+                  req={values.apps.length !== (preferences - 1)}
                 />
               </>
             )}
-            {count === 1 ? (
+            {count > 0 ? (
               <div className=" text-green-300 italic">
-                You have successfully submitted one preference till now.
+                You have successfully submitted {count} preferences till now.
               </div>
             ) : null}
           </div>
@@ -239,10 +231,13 @@ function validateForm(values: any) {
   if (values.apps.length === 0)
     errors.apps = "Please fill atleast one department preference";
   else if (
-    values.apps.length === 2 &&
-    values.apps[0].dep === values.apps[1].dep
+    (new Set(values.apps.map((a: any) => a.dep))).size !== values.apps.length
   )
-    errors.apps = "Second preference cannot be same as first preference.";
+    errors.apps = "Cannot have duplicate prefrences";
+  else if (
+    values.apps.length > preferences
+  )
+    errors.apps = `Cannot have more than ${preferences} prefrences`;
   return errors;
 }
 
@@ -304,17 +299,17 @@ function onSumbitFactory(
 
 export default function Apply() {
   const session = useContext(SessionContext);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [count, setCount] = useState<number | undefined>(undefined);
 
   const [sig, setSig] = useState(0);
 
   useEffect(() => {
     // alert(session)
-    if (session === null) {
-      navigate("/auth");
-      return;
-    }
+    // if (session === null) {
+    //   navigate("/auth");
+    //   return;
+    // }
     supabase
       .from("applicants")
       .select("email")
@@ -324,13 +319,18 @@ export default function Apply() {
       });
   }, [session?.user?.email, sig]);
 
+  if (session === null) {
+    localStorage.setItem("redirect", "/apply");
+    return <Navigate to={"/auth"} />
+}
+
   return (
     <section className={(session !== null ? "apply" : "") + " main"}>
       <main>
         <CountContext.Provider value={count || 0}>
           {rec_open ? (session !== null ? (
             <div className=" border-2 sm:rounded-md sm:w-fit w-full max-w-[640px] border-[#202020] text-white backdrop-blur-md bg-[#ffffff09]">
-              {(count || 0) < 2 ? (
+              {(count || 0) < preferences ? (
                 <Formik
                   initialValues={{
                     apps: [],
@@ -343,8 +343,9 @@ export default function Apply() {
                   {Application}
                 </Formik>
               ) : (
-                <div className="p-8 text-xl">
-                  You have completed your application!
+                <div className="p-8">
+                  <h1 className="mb-2 text-xl font-bold">Success</h1>
+                  <p>Your application was received, keep an eye on your mail box, we will email you regarding your shortlisting, don't miss it!</p>
                 </div>
               )}
             </div>
