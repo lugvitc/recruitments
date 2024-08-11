@@ -11,3 +11,14 @@ body {
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
 }
+
+a.intext {
+    text-decoration: underline;
+    color: rgb(250 204 21);
+    transition: all;
+    transition-duration: 100ms;
+}
+
+a.intext:hover {
+    color: rgb(255, 132, 0);
+}

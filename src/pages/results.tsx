@@ -7,11 +7,7 @@ import { departments as deplookup } from "./book";
 
 
 
-const lookup = Object.assign(deplookup, {
-    meda_social: "media",
-    media_des: "media",
-    media_photo: "media"
-})
+const lookup = deplookup;
 
 interface App {
     id: number;

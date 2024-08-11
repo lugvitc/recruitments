@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "./navbar.scss";
 import { useContext, useEffect, useRef } from "react";
 import { SessionContext, supabase } from "../supabase";
+import { booking, rec_open, results } from "../pages";
 
 export default function NavBar() {
   const session = useContext(SessionContext);
@@ -28,7 +29,7 @@ export default function NavBar() {
         </div>
         <div className=" flex justify-center items-center gap-4 sm:gap-8">
           <Link to="/">Home</Link>
-          <Link to="/result">Results</Link>
+          { results ? (<Link to="/result">Results</Link>) : (booking ? (<Link to="/book">Book</Link>) : (rec_open ? (<Link to="/apply">Apply</Link>) : ""))}
           {session !== null ? (
             <button
               onClick={() =>
