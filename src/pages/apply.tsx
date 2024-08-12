@@ -172,7 +172,8 @@ function Application({ values, isSubmitting, isValidating }: any) {
               ? values.apps.map((app: any, index: number) => (
                   <div key={index} className="flex flex-col gap-2">
                     <label htmlFor={`apps.${index}.dep`}>
-                      Department Preference {index + 1}
+                      Department Preference
+                      {/* {index + 1} */}
                       <br />
                       {pref[index]}
                     </label>
@@ -186,7 +187,9 @@ function Application({ values, isSubmitting, isValidating }: any) {
             {values.apps.length + count < preferences && (
               <>
                 <label htmlFor="temppref">
-                  <h2>Department Preference {values.apps.length + 1}</h2>{" "}
+                  <h2>Department Preference
+                    {/* {values.apps.length + 1} */}
+                  </h2>{" "}
                   {pref[values.apps.length]}
                 </label>
                 <Preference
