@@ -6,9 +6,9 @@ import Login from "./pages/login"
 import Apply from "./pages/apply"
 import { useEffect, useState } from "react"
 import { supabase, SessionContext } from "./supabase"
-import Book from "./pages/book"
+// import Book from "./pages/book"
 import Level from "./pages/level"
-import Result from "./pages/results"
+// import Result from "./pages/results"
 
 const router = createBrowserRouter(
 	createRoutesFromElements(
@@ -17,9 +17,9 @@ const router = createBrowserRouter(
 				<Route path="/" element={<Root />} />
 				<Route path="auth" element={<Login />} />
 				<Route path="apply" element={<Apply />} />
-				<Route path="book" element={<Book />} />
+				{/* <Route path="book" element={<Book />} /> */}
 				<Route path="admin" element={<Level />} />
-				<Route path="result" element={<Result />} />
+				{/* <Route path="result" element={<Result />} /> */}
 			</Route>
 		</>
 	)

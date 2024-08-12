@@ -45,7 +45,8 @@ const questions: { [key: string]: (string | any)[] | undefined } = {
     "What do you hope to achieve by being a part of this department?",
     "Have you had any prior experience in marketing or sponsorship roles? If yes, please elaborate.",
     "Give an example of a creative marketing idea you have implemented or would like to implement.",
-    "You’ve organized a sponsorship deal that includes social media promotion, but the sponsor is not happy with the engagement the posts are getting. How would you address their concerns?",
+    "You're leading a marketing campaign for an event with a limited budget and low engagement two weeks before the event. What steps would you take to boost attendance and ensure the event's success?",
+    "Imagine you're approaching a potential sponsor for a sample event organized by our MnS department. How would you craft your pitch to highlight the benefits for the sponsor and secure their support? Please provide a brief outline of your strategy and key points you'd include in the pitch."
   ],
 
   cont: [
@@ -57,8 +58,8 @@ const questions: { [key: string]: (string | any)[] | undefined } = {
   ],
 
   tech: [
-    "Links to your profiles/projects (for eg. Github, portfolio website etc.)",
-    "Share us your technical interests/motivations"
+    "Links to your profiles/projects (for eg. Github, portfolio website, etc.) if none, write a bit about your technical journey",
+    "Share with us your technical interests/motivations"
   ]
 };
 
@@ -171,7 +172,8 @@ function Application({ values, isSubmitting, isValidating }: any) {
               ? values.apps.map((app: any, index: number) => (
                   <div key={index} className="flex flex-col gap-2">
                     <label htmlFor={`apps.${index}.dep`}>
-                      Department Preference {index + 1}
+                      Department Preference
+                      {/* {index + 1} */}
                       <br />
                       {pref[index]}
                     </label>
@@ -185,7 +187,9 @@ function Application({ values, isSubmitting, isValidating }: any) {
             {values.apps.length + count < preferences && (
               <>
                 <label htmlFor="temppref">
-                  <h2>Department Preference {values.apps.length + 1}</h2>{" "}
+                  <h2>Department Preference
+                    {/* {values.apps.length + 1} */}
+                  </h2>{" "}
                   {pref[values.apps.length]}
                 </label>
                 <Preference
