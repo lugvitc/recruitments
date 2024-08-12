@@ -38,15 +38,14 @@ const questions: { [key: string]: (string | any)[] | undefined } = {
     "What is expected of a member of the Management Department at Linux Club?",
     "What makes you suitable for the role?",
     "List any valuable managerial experiences.",
-    "Suppose there is an event happening and hardly 2 days are left for the event, and your team is stuck with an implementation of a particular task which is hampering the progress of planning and execution, all the teammates are down and demotivated, none of you have found a feasible solution. What would you do?"
+    "Suppose there is an event happening and hardly 2 days are left for the event, and your team is stuck with an implementation of a particular task which is hampering the progress of planning and execution, all the teammates are down and demotivated, none of you have found a feasible solution. What would you do?",
   ],
 
   mns: [
     "What do you hope to achieve by being a part of this department?",
     "Have you had any prior experience in marketing or sponsorship roles? If yes, please elaborate.",
     "Give an example of a creative marketing idea you have implemented or would like to implement.",
-    "You're leading a marketing campaign for an event with a limited budget and low engagement two weeks before the event. What steps would you take to boost attendance and ensure the event's success?",
-    "Imagine you're approaching a potential sponsor for a sample event organized by our MnS department. How would you craft your pitch to highlight the benefits for the sponsor and secure their support? Please provide a brief outline of your strategy and key points you'd include in the pitch."
+    "You’ve organized a sponsorship deal that includes social media promotion, but the sponsor is not happy with the engagement the posts are getting. How would you address their concerns?",
   ],
 
   cont: [
@@ -58,25 +57,51 @@ const questions: { [key: string]: (string | any)[] | undefined } = {
   ],
 
   tech: [
-    "Links to your profiles/projects (for eg. Github, portfolio website, etc.) if none, write a bit about your technical journey",
-    "Share with us your technical interests/motivations"
-  ]
+    "Links to your profiles/projects (for eg. Github, portfolio website etc.)",
+    "Share us your technical interests/motivations",
+  ],
 };
 
 const notes: { [key: string]: (string | any)[] | undefined } = {
   tech: [
-    (<div className="font-mono">
+    <div className="font-mono">
       <h3>Technical Subdepartments</h3>
       <ul className=" list-disc text-sm ml-4">
-        <li>Development - Creating bots, building full stack applications, attending hackathons (<a href="https://github.com/lugvitc" className="intext">github.com/lugvitc</a>)</li>
-        <li>OS - Ricing, Distrohopping, creating OS derivatives (i use arch btw)</li>
-        <li>Cybersecurity - Attending CTF events, creating questions and organising CTF events. (<a href="https://ctftime.org/team/303100" className="intext">ctftime.org/team/303100</a>)</li>
-        <li>Embedded Systems - Working with routers, switches, ESP32s, camera devices etc.</li>
-        <li>DevOps - Managing and automating the infrastructure of all our services online (<a href="https://hub.lugvitc.net" className="intext">hub.lugvitc.net</a>)</li>
+        <li>
+          Development - Creating bots, building full stack applications,
+          attending hackathons (
+          <a href="https://github.com/lugvitc" className="intext">
+            github.com/lugvitc
+          </a>
+          )
+        </li>
+        <li>
+          OS - Ricing, Distrohopping, creating OS derivatives (i use arch btw)
+        </li>
+        <li>
+          Cybersecurity - Attending CTF events, creating questions and
+          organising CTF events. (
+          <a href="https://ctftime.org/team/303100" className="intext">
+            ctftime.org/team/303100
+          </a>
+          )
+        </li>
+        <li>
+          Embedded Systems - Working with routers, switches, ESP32s, camera
+          devices etc.
+        </li>
+        <li>
+          DevOps - Managing and automating the infrastructure of all our
+          services online (
+          <a href="https://hub.lugvitc.net" className="intext">
+            hub.lugvitc.net
+          </a>
+          )
+        </li>
       </ul>
-    </div>),
-  ]
-}
+    </div>,
+  ],
+};
 
 const common_questions = [
   "Why do you want to join the Linux Club?",
@@ -106,7 +131,7 @@ function CommonQuestions({ name }: { name: string }) {
 function Questions({ dep, name }: { [key: string]: string }) {
   return (
     <>
-      { notes[dep] !== undefined ? notes[dep] : null }
+      {notes[dep] !== undefined ? notes[dep] : null}
       {questions[dep] !== undefined
         ? questions[dep]!.map((question, index) => {
             return (
@@ -172,7 +197,7 @@ function Application({ values, isSubmitting, isValidating }: any) {
               ? values.apps.map((app: any, index: number) => (
                   <div key={index} className="flex flex-col gap-2">
                     <label htmlFor={`apps.${index}.dep`}>
-                      Department Preference {index + 1}
+                      Department Preference
                       <br />
                       {pref[index]}
                     </label>
@@ -186,8 +211,7 @@ function Application({ values, isSubmitting, isValidating }: any) {
             {values.apps.length + count < preferences && (
               <>
                 <label htmlFor="temppref">
-                  <h2>Department Preference {values.apps.length + 1}</h2>{" "}
-                  {pref[values.apps.length]}
+                  <h2>Department Preference</h2> {pref[values.apps.length]}
                 </label>
                 <Preference
                   key={values.apps.length}
@@ -195,13 +219,13 @@ function Application({ values, isSubmitting, isValidating }: any) {
                   onChange={(sel: any) => {
                     arrayHelpers.push({ dep: sel.target.value, questions: [] });
                   }}
-                  req={values.apps.length !== (preferences - 1)}
+                  req={values.apps.length !== preferences - 1}
                 />
               </>
             )}
             {count > 0 ? (
               <div className=" text-green-300 italic">
-                You have successfully submitted {count} preferences till now.
+                You have successfully submitted your department preference.
               </div>
             ) : null}
           </div>
@@ -231,12 +255,10 @@ function validateForm(values: any) {
   if (values.apps.length === 0)
     errors.apps = "Please fill atleast one department preference";
   else if (
-    (new Set(values.apps.map((a: any) => a.dep))).size !== values.apps.length
+    new Set(values.apps.map((a: any) => a.dep)).size !== values.apps.length
   )
     errors.apps = "Cannot have duplicate prefrences";
-  else if (
-    values.apps.length > preferences
-  )
+  else if (values.apps.length > preferences)
     errors.apps = `Cannot have more than ${preferences} prefrences`;
   return errors;
 }
@@ -321,46 +343,51 @@ export default function Apply() {
 
   if (session === null) {
     localStorage.setItem("redirect", "/apply");
-    return <Navigate to={"/auth"} />
-}
+    return <Navigate to={"/auth"} />;
+  }
 
   return (
     <section className={(session !== null ? "apply" : "") + " main"}>
       <main>
         <CountContext.Provider value={count || 0}>
-          {rec_open ? (session !== null ? (
-            <div className=" border-2 sm:rounded-md sm:w-fit w-full max-w-[640px] border-[#202020] text-white backdrop-blur-md bg-[#ffffff09]">
-              {(count || 0) < preferences ? (
-                <Formik
-                  initialValues={{
-                    apps: [],
-                    name: session?.user?.user_metadata?.full_name || "",
-                    common_questions: [],
-                  }}
-                  onSubmit={onSumbitFactory(sig, setSig, session)}
-                  validate={validateForm}
-                >
-                  {Application}
-                </Formik>
-              ) : (
-                <div className="p-8">
-                  <h1 className="mb-2 text-xl font-bold">Success</h1>
-                  <p>Your application was received, keep an eye on your mail box, we will email you regarding your shortlisting, don't miss it!</p>
-                </div>
-              )}
-            </div>
+          {rec_open ? (
+            session !== null ? (
+              <div className=" border-2 sm:rounded-md sm:w-fit w-full max-w-[640px] border-[#202020] text-white backdrop-blur-md bg-[#ffffff09]">
+                {(count || 0) < preferences ? (
+                  <Formik
+                    initialValues={{
+                      apps: [],
+                      name: session?.user?.user_metadata?.full_name || "",
+                      common_questions: [],
+                    }}
+                    onSubmit={onSumbitFactory(sig, setSig, session)}
+                    validate={validateForm}
+                  >
+                    {Application}
+                  </Formik>
+                ) : (
+                  <div className="p-8">
+                    <h1 className="mb-2 text-xl font-bold">Success</h1>
+                    <p>
+                      Your application was received, keep an eye on your mail
+                      box, we will email you regarding your shortlisting, don't
+                      miss it!
+                    </p>
+                  </div>
+                )}
+              </div>
+            ) : (
+              <div>
+                <span className="text-2xl">Not logged in</span>
+              </div>
+            )
           ) : (
-            <div>
-              <span className="text-2xl">Not logged in</span>
+            <div className=" border-2 sm:rounded-md sm:w-fit w-full max-w-[640px] border-[#202020] text-white backdrop-blur-md bg-[#ffffff09] p-8">
+              Applications have been closed, thank you for your interest.
             </div>
-          )) : (
-			<div className=" border-2 sm:rounded-md sm:w-fit w-full max-w-[640px] border-[#202020] text-white backdrop-blur-md bg-[#ffffff09] p-8">
-				Applications have been closed, thank you for your interest.
-			</div>
-		  )}
+          )}
         </CountContext.Provider>
       </main>
     </section>
   );
 }
-
