@@ -58,6 +58,8 @@ const questions: { [key: string]: (string | any)[] | undefined } = {
   ],
 
   tech: [
+    "If there was a novel idea that you would like to work on in the distant future (or are working on it right now), what would it be?",
+    "If there was something you would want to learn, what would it be?",
     "Links to your profiles/projects (for eg. Github, portfolio website, etc.) if none, write a bit about your technical journey",
     "Share with us your technical interests/motivations"
   ]
