@@ -214,6 +214,12 @@ export default function Root() {
 								and contribute, it doesn't matter what operating system you use.
 							</p>
 						</Card>
+						<Card className="">
+							<h2>Want to know more?</h2>
+							<p>
+								You can read more about Linux Users Group <a href="https://cloud.lugvitc.net/s/74pTQ4XrWSqr4in" className="underline text-yellow-400">here</a>.
+							</p>
+						</Card>
 					</div>
 				</section>
 				<section>
