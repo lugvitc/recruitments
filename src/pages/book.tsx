@@ -58,7 +58,7 @@ function SlotSelect({ap, rawSlots}: {ap: App, rawSlots: Slot[]}) {
             <div>No slots left, please contact us.</div>
         )
         else return (
-            <div>You were shortlisted, check back later to book your slot</div>
+            <div>We are yet to release the result for this department</div>
         )
     }
 
