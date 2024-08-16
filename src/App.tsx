@@ -47,6 +47,11 @@ export default function App() {
   return (
     <SessionContext.Provider value={session}>
       <RouterProvider router={router} />
+      <div
+        dangerouslySetInnerHTML={{
+          __html: "<!--It was always intentional-->",
+        }}
+      />
     </SessionContext.Provider>
   );
 }
