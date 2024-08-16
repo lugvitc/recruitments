@@ -4,8 +4,8 @@ import Card from "../components/Card";
 
 import "./index.scss";
 
-export const rec_open = true;
-export const booking = !rec_open && false;
+export const rec_open = false;
+export const booking = !rec_open && true;
 export const results = !rec_open && !booking && false;
 
 export default function Root() {
@@ -187,10 +187,10 @@ export default function Root() {
                 </span>{" "}
                 only for Linux users?
               </h1>
-              <p>
+              <div>
                 Though Linux is in the name, LUG represents more than just
                 Linux. It embodies:
-                <ul className="list-disc">
+                <ul className="list-disc ml-4">
                   <li>The principles of free and open-source software</li>
                   <li>Comprehensive tech education</li>
                   <li>
@@ -198,7 +198,7 @@ export default function Root() {
                     reason, sometimes not 😅)
                   </li>
                 </ul>
-              </p>
+              </div>
             </div>
           </div>
         </section>
