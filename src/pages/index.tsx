@@ -28,7 +28,7 @@ export default function Root() {
             {/* <br />Join the <a href="https://chat.whatsapp.com/KdZQ7vmM4JSFjTJSx7togp" className=" underline text-blue-500">whatsapp group</a> if you have applied */}
             {!rec_open ? (
               <div className=" w-52 font-semibold">
-                {results ? "Results are released!" : "Recruitments are closed"}
+                {results ? "Results are released!" : "Applications are closed"}
               </div>
             ) : null}
             <Link
