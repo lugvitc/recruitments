@@ -12,9 +12,9 @@ import Login from "./pages/login";
 // import Apply from "./pages/apply";
 import { useEffect, useState } from "react";
 import { supabase, SessionContext } from "./supabase";
-import Book from "./pages/book"
+import Book from "./pages/book";
 import Level from "./pages/level";
-// import Result from "./pages/results"
+import Result from "./pages/results";
 
 function ErrorBoundary() {
   const error: any = useRouteError();
@@ -23,14 +23,14 @@ function ErrorBoundary() {
   return (
     <div className="flex justify-center items-center h-full w-full">
       <div className="max-w-80">
-        <h1 className="text-7xl text-yellow-400 uppercase font-mono font-semibold italic">{error.status}</h1>
-        <p className="text-3xl">
-          {error.statusText}
-        </p>
+        <h1 className="text-7xl text-yellow-400 uppercase font-mono font-semibold italic">
+          {error.status}
+        </h1>
+        <p className="text-3xl">{error.statusText}</p>
         <p className="font-mono">{error.data}</p>
       </div>
     </div>
-  )
+  );
 }
 
 const router = createBrowserRouter(
@@ -42,7 +42,7 @@ const router = createBrowserRouter(
         {/* <Route path="apply" element={<Apply />} /> */}
         <Route path="book" element={<Book />} />
         <Route path="admin" element={<Level />} />
-        {/* <Route path="result" element={<Result />} /> */}
+        <Route path="result" element={<Result />} />
       </Route>
     </>,
   ),
