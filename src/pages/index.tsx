@@ -6,7 +6,8 @@ import "./index.scss";
 
 export const rec_open = false;
 export const booking = !rec_open && true;
-export const results = !rec_open && !booking && false;
+// export const results = !rec_open && !booking && false;
+export const results = true;
 
 export default function Root() {
   // const txtsh = "0px 0px 2px rgb(250 204 21)";
@@ -33,10 +34,22 @@ export default function Root() {
             ) : null}
             <Link
               aria-disabled="true"
-              to="/apply"
+              to="/result"
               className={
                 "rounded-md mt-4 text-xl text-center p-2 text-black font-semibold transition-all border" +
-                (!rec_open
+                (!results
+                  ? " bg-yellow-700 border-yellow-700 pointer-events-none"
+                  : " bg-yellow-400 hover:bg-black hover:text-white border-yellow-400")
+              }
+            >
+              View Result
+            </Link>
+            <Link
+              aria-disabled="true"
+              to="/apply"
+              className={
+                "rounded-md hidden mt-4 text-xl text-center p-2 text-black font-semibold transition-all border" +
+                (rec_open
                   ? " bg-yellow-700 border-yellow-700 pointer-events-none"
                   : " bg-yellow-400 hover:bg-black hover:text-white border-yellow-400")
               }
