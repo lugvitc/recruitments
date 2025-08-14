@@ -281,7 +281,7 @@ export default function Root() {
             </div>
           </div>
           <footer className=" h-14 w-full bg-neutral-950 absolute bottom-0 flex justify-center items-center font-mono text-yellow-400">
-            Copyright 2024, LUGVITC. Made with &lt;3
+            Copyright {new Date().getFullYear()}, LUGVITC. Made with &lt;3
           </footer>
         </section>
       </section>
