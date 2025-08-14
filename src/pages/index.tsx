@@ -4,10 +4,10 @@ import Card from "../components/Card";
 
 import "./index.scss";
 
-export const rec_open = false;
+export const rec_open = true;
 export const booking = !rec_open && true;
-// export const results = !rec_open && !booking && false;
-export const results = true;
+export const results = !rec_open && !booking && false;
+// export const results = true;
 
 export default function Root() {
   // const txtsh = "0px 0px 2px rgb(250 204 21)";

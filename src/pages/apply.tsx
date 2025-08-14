@@ -15,13 +15,13 @@ import { rec_open } from ".";
 
 export const departments = {
   management: "Management",
-  mns: "Marketing and Sponsorhips",
+  // mns: "Marketing and Sponsorhips",
   cont: "Content",
   media: "Media",
   tech: "Technical",
 };
 
-const preferences = 1;
+const preferences = 2;
 
 const questions: { [key: string]: (string | any)[] | undefined } = {
   media: [
@@ -95,11 +95,12 @@ const notes: { [key: string]: (string | any)[] | undefined } = {
         </li>
         <li>
           DevOps - Managing and automating the infrastructure of all our
-          services online (
+          services online.
+          {/* (
           <a href="https://hub.lugvitc.net" className="intext">
             hub.lugvitc.net
           </a>
-          )
+          ) */}
         </li>
       </ul>
     </div>,
