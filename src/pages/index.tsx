@@ -175,13 +175,13 @@ export default function Root() {
                 social media handles and creating an impactful visual identity.
               </p>
             </Card>
-            <Card className="">
+            {/* <Card className="">
               <h2>Marketing and Sponsorhips</h2>
               <p>
                 Attract industry sponsors and captivate public interest, drive
                 event visibilty and bolster the brand image.
               </p>
-            </Card>
+            </Card> */}
             <Card className="">
               <h2>Content</h2>
               <p>
@@ -246,7 +246,7 @@ export default function Root() {
               <p>
                 You can read more about Linux Users Group{" "}
                 <a
-                  href="https://cloud.lugvitc.net/s/74pTQ4XrWSqr4in"
+                  href="https://chat.whatsapp.com/F5QbgiT6fmRIuzaJcEyEne"
                   className="underline text-yellow-400"
                 >
                   here
