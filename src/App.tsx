@@ -14,7 +14,7 @@ import { useEffect, useState } from "react";
 import { supabase, SessionContext } from "./supabase";
 import Book from "./pages/book";
 import Level from "./pages/level";
-import Result from "./pages/results";
+// import Result from "./pages/results";
 
 function ErrorBoundary() {
   const error: any = useRouteError();
