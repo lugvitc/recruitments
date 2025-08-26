@@ -15,7 +15,6 @@ import { rec_open } from ".";
 
 export const departments = {
   management: "Management",
-  // mns: "Marketing and Sponsorhips",
   cont: "Content",
   media: "Media",
   tech: "Technical",
@@ -32,21 +31,15 @@ const questions: { [key: string]: (string | any)[] | undefined } = {
     "What do you hope to achieve by being part of this team?",
     "How many hours per week can you dedicate to the Linux Club’s media activities?",
     "Describe a time when you faced a creative challenge. How did you overcome it?",
+    "How well do you collaborate in a team?",
   ],
 
   management: [
-    "What is expected of a member of the Management Department at Linux Club?",
-    "What makes you suitable for the role?",
-    "List any valuable managerial experiences.",
+    "What according to you is expected of a member of the Management Department at Linux Club?",
+    "Describe any Previous Managerial Experience, What was your specific role and what was the outcome?",
+    "What are the top 3 skills that you possess that would make you a great fit for this role.",
     "Suppose there is an event happening and hardly 2 days are left for the event, and your team is stuck with an implementation of a particular task which is hampering the progress of planning and execution, all the teammates are down and demotivated, none of you have found a feasible solution. What would you do?",
-  ],
-
-  mns: [
-    "What do you hope to achieve by being a part of this department?",
-    "Have you had any prior experience in marketing or sponsorship roles? If yes, please elaborate.",
-    "Give an example of a creative marketing idea you have implemented or would like to implement.",
-    "You're leading a marketing campaign for an event with a limited budget and low engagement two weeks before the event. What steps would you take to boost attendance and ensure the event's success?",
-    "Imagine you're approaching a potential sponsor for a sample event organized by our MnS department. How would you craft your pitch to highlight the benefits for the sponsor and secure their support? Please provide a brief outline of your strategy and key points you'd include in the pitch.",
+    "A 24 hour hackathon is going on in MG Auditorium, and at around after-dinner (10pm) time, people want to get out of the Auditorium even after repeated instructions. A group of participants are getting very furious. What do you do?",
   ],
 
   cont: [
@@ -54,7 +47,7 @@ const questions: { [key: string]: (string | any)[] | undefined } = {
     "In your opinion, what makes a piece of content engaging and effective? Feel free to provide an example of content that you think exemplifies these qualities",
     "Have you had any previous experience in writing? If yes, please share a Drive link of your work.",
     "Which writing format do you find yourself most confident and comfortable working with ? (eg: short,attractive pieces or long,formal content)",
-    "If you're given a task to write a report on the outcomes of a recent Hackathon , What key elements would you include? It should be informative to both participants and external individuals. Answer briefly.",
+    "If you were tasked with writing an engaging and informative description for a technical event or hackathon, how would you structure the content to capture the audience’s attention while clearly conveying the necessary details?",
   ],
 
   tech: [
