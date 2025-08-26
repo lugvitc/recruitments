@@ -42,7 +42,9 @@ const router = createBrowserRouter(
         <Route path="apply" element={<Apply />} />
         <Route path="book" element={<Book />} />
         <Route path="admin" element={<Level />} />
-        <Route path="result" element={<Result />} />
+        {
+          //<Route path="result" element={<Result />} />
+        }
       </Route>
     </>,
   ),

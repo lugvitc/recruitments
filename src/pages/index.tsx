@@ -32,14 +32,15 @@ export default function Root() {
                 {results ? "Results are released!" : "Applications are closed"}
               </div>
             ) : null}
+
             <Link
               aria-disabled="true"
               to="/result"
               className={
                 "rounded-md mt-4 text-xl text-center p-2 text-black font-semibold transition-all border" +
-                (!results
-                  ? " bg-yellow-700 border-yellow-700 pointer-events-none"
-                  : " bg-yellow-400 hover:bg-black hover:text-white border-yellow-400")
+                (results
+                  ? " bg-yellow-400 hover:bg-black hover:text-white border-yellow-400"
+                  : " hidden")
               }
             >
               View Result
@@ -48,10 +49,10 @@ export default function Root() {
               aria-disabled="true"
               to="/apply"
               className={
-                "rounded-md hidden mt-4 text-xl text-center p-2 text-black font-semibold transition-all border" +
+                "rounded-md mt-4 text-xl text-center p-2 text-black font-semibold transition-all border" +
                 (rec_open
-                  ? " bg-yellow-700 border-yellow-700 pointer-events-none"
-                  : " bg-yellow-400 hover:bg-black hover:text-white border-yellow-400")
+                  ? " bg-yellow-400 hover:bg-black hover:text-white border-yellow-400"
+                  : " bg-yellow-700 border-yellow-700 pointer-events-none")
               }
             >
               Apply
@@ -78,7 +79,8 @@ export default function Root() {
               <p className=" w-80 font-mono">
                 A consortium of exceptional talent, united in the pursuit of
                 mastery. <br />A space where learning, growth, and reaching your
-                full potential come together.
+                full potential come together. <br /> A community on a mission to
+                give control of your tech back to you.
               </p>
             </div>
           </div>
@@ -105,10 +107,11 @@ export default function Root() {
               </p>
             </Card>
             <Card className="">
-              <h2>Find your team</h2>
+              <h2>Teams that Last</h2>
               <p>
-                Team up with seniors, form hackathon or CTF teams, and compete
-                together. Mix and match to find your perfect teammates!
+                Find passion for tech like nowhere else. Find the peers who you
+                can call "co-founder". Go build out that idea that you've needed
+                help with.
               </p>
             </Card>
           </div>
@@ -141,7 +144,8 @@ export default function Root() {
               <p className=" w-80 font-mono">
                 At LUG, we deeply value each member and their contributions,
                 fostering a collaborative environment where every voice is heard
-                and every idea matters.
+                and every idea matters. <br />
+                There is no "lead" or "member". We are all the same here.
               </p>
             </div>
           </div>
