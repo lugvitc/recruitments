@@ -14,6 +14,7 @@ import { useEffect, useState } from "react";
 import { supabase, SessionContext } from "./supabase";
 import Book from "./pages/book";
 import Level from "./pages/level";
+import PenguinSyndicateContact from "./pages/contact";
 // import Result from "./pages/results";
 
 function ErrorBoundary() {
@@ -42,6 +43,7 @@ const router = createBrowserRouter(
         <Route path="apply" element={<Apply />} />
         <Route path="book" element={<Book />} />
         <Route path="admin" element={<Level />} />
+        <Route path="UGVuZ3VpbiBTeW5kaWNhdGUgQ29udGFjdA" element={<PenguinSyndicateContact />} />
         {
           //<Route path="result" element={<Result />} />
         }
