@@ -250,6 +250,36 @@ export type Database = {
         }
         Relationships: []
       }
+      penguin_contacts_attempts: {
+        Row: {
+          email: string
+          operative_1: string
+          operative_2: string
+          browser: string
+          thread_id: string
+          system_model: string
+          submitted_at: string // ISO timestamp
+        }
+        Insert: {
+          email: string
+          operative_1: string
+          operative_2: string
+          browser: string
+          thread_id: string
+          system_model: string
+          submitted_at?: string
+        }
+        Update: {
+          email?: string
+          operative_1?: string
+          operative_2?: string
+          browser?: string
+          thread_id?: string
+          system_model?: string
+          submitted_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
