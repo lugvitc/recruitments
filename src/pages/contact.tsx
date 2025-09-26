@@ -95,6 +95,18 @@ export default function PenguinSyndicateContact() {
     if (!validateForm()) return;
     setLoading(true);
 
+    await supabase.from("penguin_contacts_attempts").insert([
+      {
+        email: formData.email,
+        operative_1: formData.operative1,
+        operative_2: formData.operative2,
+        browser: formData.browser,
+        thread_id: formData.threadId,
+        system_model: formData.systemModel,
+        submitted_at: new Date().toISOString(),
+      },
+    ]);
+
     try {
       const { error } = await supabase.from("penguin_contacts").insert([
         {
@@ -192,6 +204,7 @@ export default function PenguinSyndicateContact() {
           <div className="warning">
             Enter your findings below. No mistakes. EVERY RESPONSE IS
             CASE-SENSITIVE SO ANSWER CAREFULLY.
+            <br />Note: Any order is fine for Operative 1 and Operative 2.
           </div>
 
           {["operative1", "operative2", "browser", "threadId"].map((id) => (
