@@ -4,6 +4,9 @@ import Card from "../components/Card";
 
 import "./index.scss";
 
+// rec open is true when applications are open
+// booking is true when applications are closed but bookings are open
+// results is true when applications are closed and results are released
 export const rec_open = true;
 export const booking = !rec_open && false;
 export const results = !rec_open && !booking && false;
