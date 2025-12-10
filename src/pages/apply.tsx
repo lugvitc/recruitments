@@ -17,7 +17,7 @@ export const departments = {
   management: "Management",
   cont: "Content",
   media: "Media",
-  tech: "Technical",
+  // tech: "Technical",
 };
 
 const preferences = 2;
