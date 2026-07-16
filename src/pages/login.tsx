@@ -1,22 +1,22 @@
 
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect } from 'react';
 import Card from '../components/Card';
 import { SessionContext, supabase } from '../supabase';
 import './mainbg.scss';
 import { useNavigate } from 'react-router-dom';
-import { Field, Form, Formik, FormikValues } from 'formik';
+// import { Field, Form, Formik, FormikValues } from 'formik';
 
-function sleep(time: number) {
-    return new Promise((resolve) => setTimeout(resolve, time));
-}
+// function sleep(time: number) {
+//     return new Promise((resolve) => setTimeout(resolve, time));
+// }
 
 
 export default function Login() {
     const session = useContext(SessionContext);
     const navigate = useNavigate();
 
-    const [sentAt, setSentAt] = useState<number>(-1);
-    const [left, setLeft] = useState<number>(-1)
+    // const [sentAt, setSentAt] = useState<number>(-1);
+    // const [left, setLeft] = useState<number>(-1)
 
     useEffect(() => {
         if (session !== null) {
@@ -31,6 +31,7 @@ export default function Login() {
                 <Card className="flex flex-col gap-4 max-w-80">
                     <span className='text-xl font-semibold'>Authentication</span>
                     <div className='flex flex-col gap-2 items-center justify-center'>
+                        {/* Email login disabled
                         <Formik initialValues={{email: ""}} onSubmit={function (values: FormikValues,): void | Promise<any> {
                             const promise = supabase.auth.signInWithOtp({
                                 email: values.email,
@@ -85,6 +86,7 @@ export default function Login() {
                             )}
                         </Formik>
                         <div className='italic'>or</div>
+                        */}
                         <button className='flex items-center rounded-md text-center bg-yellow-400 text-black font-medium hover:bg-black hover:text-white transition-all border border-yellow-400 w-full'
                             onClick={() => {supabase.auth.signInWithOAuth({
                                 provider: "google",
