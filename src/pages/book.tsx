@@ -259,8 +259,8 @@ export default function Book() {
                   </Formik>
                 ) : (
                   <div className="p-8 text-lg">
-                    It seems like you haven't applied. You can't participate in
-                    the interviews.
+                    It seems like you haven't been shortlisted. You can't participate in
+                    the interviews. Better luck next time :)
                   </div>
                 )}
               </div>
