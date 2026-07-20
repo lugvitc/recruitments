@@ -6,7 +6,7 @@ import './mainbg.scss';
 import { useNavigate } from 'react-router-dom';
 import { Field, Form, Formik, FormikValues } from 'formik';
 
-const ENABLE_EMAIL_LOGIN = false;
+const ENABLE_EMAIL_LOGIN = true;
 
 function sleep(time: number) {
     return new Promise((resolve) => setTimeout(resolve, time));
