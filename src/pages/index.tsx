@@ -8,7 +8,7 @@ import "./index.scss";
 // booking is true when applications are closed but bookings are open
 // results is true when applications are closed and results are releasedu
 export const rec_open = false;
-export const booking = !rec_open && false;
+export const booking = !rec_open && true;
 export const results = !rec_open && !booking && false;
 // export const results = true;
 
