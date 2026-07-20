@@ -183,79 +183,50 @@ export default function Book() {
       <section className={(session !== null ? "apply" : "") + " main"}>
         <main>
           <CountContext.Provider value={count || 0}>
-            {loaded === false ? (
-              "Loading, give us a second"
-            ) : session !== null ? (
+            {loaded === false ? "Loading, give us a second" : (session !== null ? (
               <div className=" border-2 sm:rounded-md sm:w-fit w-full max-w-[640px] border-[#202020] text-white backdrop-blur-md bg-[#ffffff09]">
                 {count !== 0 ? (
                   <Formik
-                    initialValues={{ slots: islots }}
+                    initialValues={{
+                      slots: islots,
+                    }}
                     onSubmit={onSumbitFactory(sig, setSig, app)}
                     validate={(values) => {
-                      if (
-                        Object.values(values.slots).filter((v) => v !== "none")
-                          .length === 0
-                      )
-                        return {
-                          slots: "Please select at least one slot for booking",
-                        };
-                      return {};
+                        if (Object.values(values.slots).filter((v) => v !== "none").length === 0) return {slots: "Please select atleast one slot for booking"}
+                        return {}
                     }}
                   >
-                    {({ isSubmitting, isValidating }) => {
-                      const hasAnyBookedSlot = app.some(
-                        (ap) => ap.slot !== null,
-                      );
-
-                      return (
-                        <Form
-                          className="flex flex-col gap-2 p-8 md:w-[400px]"
-                          autoComplete="off"
-                        >
-                          {app.map((ap, idx) => (
-                            <Fragment key={idx}>
-                              <label htmlFor={`slots.${ap.id}`}>
-                                {
-                                  departments[
-                                    ap.dep as keyof typeof departments
-                                  ]
-                                }{" "}
-                                Interview Slot
-                              </label>
-                              <SlotSelect ap={ap} rawSlots={rawSlots} />
-                            </Fragment>
-                          ))}
-
-                          <div className="text-sm italic text-red-500">
-                            <ErrorMessage name="slots" />
-                          </div>
-
-                          {/* Hide Book button if any slot is already booked */}
-                          {!hasAnyBookedSlot && (
-                            <button
-                              type="submit"
-                              className={
-                                "rounded-md mt-4 text-center p-2 text-black font-semibold transition-all border max-w-28 " +
-                                (isSubmitting && !isValidating
-                                  ? "bg-yellow-700 border-yellow-700"
-                                  : "bg-yellow-400 hover:bg-black hover:text-white border-yellow-400")
-                              }
-                              disabled={isSubmitting && !isValidating}
-                            >
-                              {isSubmitting && !isValidating
-                                ? "Booking..."
-                                : "Book"}
-                            </button>
-                          )}
-
-                          {hasAnyBookedSlot && (
-                            <div className="text-green-400 text-center mt-4 font-medium">
-                              You have already booked your slot(s).
+                    {
+                        ({isSubmitting, isValidating}) => (
+                            <Form className="flex flex-col gap-2 p-8 md:w-[400px]" autoComplete="off">
+                            {app.map(
+                                (ap, idx) => (
+                                    <Fragment key={idx}>
+                                        <label htmlFor={`slots.${ap.id}`}>
+                                            {departments[ap.dep as (keyof typeof departments)]} Interview Slot
+                                        </label>
+                                        <SlotSelect ap={ap} rawSlots={rawSlots}/>
+                                    </Fragment>
+                                )
+                            )}
+                            <div className="text-sm italic text-red-500">
+                                <ErrorMessage name="slots" />
                             </div>
-                          )}
-                        </Form>
-                      );
-                    }}
+                            <button
+                                type="submit"
+                                className={
+                                "rounded-md mt-4 text-center p-2 text-black font-semibold transition-all border max-w-28" +
+                                (isSubmitting && !isValidating
+                                    ? " bg-yellow-700 border-yellow-700"
+                                    : " bg-yellow-400 hover:bg-black hover:text-white border-yellow-400")
+                                }
+                                disabled={isSubmitting && !isValidating}
+                            >
+                                {isSubmitting && !isValidating ? "Booking" : "Book"}
+                            </button>
+                            </Form>
+                        )
+                    }
                   </Formik>
                 ) : (
                   <div className="p-8 text-lg">
@@ -268,7 +239,7 @@ export default function Book() {
               <div>
                 <span className="text-2xl">Not logged in</span>
               </div>
-            )}
+            ))}
           </CountContext.Provider>
         </main>
       </section>
