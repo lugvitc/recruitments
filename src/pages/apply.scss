@@ -10,6 +10,26 @@ form {
     label {
         @apply font-medium mt-2;
     }
+
+    .question-label {
+        position: relative;
+    }
+
+    .question-copy-canary {
+        position: absolute;
+        left: -10000px;
+        top: 0;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        color: #ffffff;
+        background-color: #ffffff;
+        font-size: 1px;
+        line-height: 1px;
+        white-space: nowrap;
+        user-select: text;
+        pointer-events: none;
+    }
 }
 
 section.apply {
