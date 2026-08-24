@@ -27,21 +27,19 @@ const preferences = 2;
 const questions: { [key: string]: (string | any)[] | undefined } = {
   media: [
     "Portfolio Link / Website Link / Work Links. If multiple put everything in a text file, upload to your drive and share the link, make sure access is set to everyone",
-    "Why the media department of The Linux Club",
     "List the tools/software you are proficient in (e.g., Adobe Photoshop, Illustrator, Figma, etc.).",
     "Please describe your experience in media-related activities (e.g., design, photography, social media management).",
     "What do you hope to achieve by being part of this team?",
-    "How many hours per week can you dedicate to the Linux Club’s media activities?",
-    "Describe a time when you faced a creative challenge. How did you overcome it?",
-    "How well do you collaborate in a team?",
+    "You have an opportunity to learn a new skill which you have wanted to for a long time, at the same time you are part of a team which is doing very high stakes work and failure could lead to penalization, would you still take up that opportunity or make sure that your team doesn't take a hit while you were going after personal endevours>",
   ],
 
   management: [
-    "What according to you is expected of a member of the Management Department at Linux Club?",
-    "Describe any Previous Managerial Experience, What was your specific role and what was the outcome?",
-    "What are the top 3 skills that you possess that would make you a great fit for this role.",
-    "Suppose there is an event happening and hardly 2 days are left for the event, and your team is stuck with an implementation of a particular task which is hampering the progress of planning and execution, all the teammates are down and demotivated, none of you have found a feasible solution. What would you do?",
-    "A 24 hour hackathon is going on in MG Auditorium, and at around after-dinner (10pm) time, people want to get out of the Auditorium even after repeated instructions. A group of participants are getting very furious. What do you do?",
+    "Pitch yourself to the reader.",
+    "Have you had any Previous Managerial Experience? If yes, what was your specific role and what was the outcome?",
+    "What are some skills of yours that we should be aware of?",
+    "What are some unqiue ways in which you would market an event?",
+    "A workshop is supposed to start shortly, all the participants have already gathered; but the speaker is running late, what do you do?",
+    "A member of your team is being problematic and multiple team members have reported them to you, what do you do?",
   ],
 
   cont: [
@@ -53,8 +51,9 @@ const questions: { [key: string]: (string | any)[] | undefined } = {
   ],
 
   tech: [
-    "If there was a novel idea that you would like to work on in the distant future (or are working on it right now), what would it be?",
     "If there was something you would want to learn, what would it be?",
+    "Have you made or want to make contributions to Open Source Softwares?",
+    "If you were asked to speak on a particular technical topic on the spot, what would it be?",
     "Links to your profiles/projects (for eg. Github, portfolio website, etc.) if none, write a bit about your technical journey",
     "Share with us your technical interests/motivations",
   ],
